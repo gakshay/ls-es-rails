@@ -1,0 +1,24 @@
+#!/usr/bin/env jruby
+
+#$: << File.dirname($0) + "/../lib"
+
+require "rubygems"
+require "logstash"
+require "logstash/runner"
+
+jarpath = File.join(File.dirname(__FILE__), "..", "vendor",
+                    "**", "*.jar")
+#p :jarpath => jarpath
+Dir[jarpath].each do |jar|
+  #p :jar => jar
+  require jar
+end
+
+
+# If the first argument is a flag, assume agent.
+if ARGV[0] =~ /^-/
+  ARGV.unshift("agent")
+end
+
+p :bin => ARGV
+LogStash::Runner.new.main(ARGV)
