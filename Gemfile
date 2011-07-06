@@ -40,7 +40,6 @@ gem 'haml'
 gem 'logstash'
 #gem 'jruby-elasticsearch'
 
-
 # Use unicorn as the web server
 # gem 'unicorn'
 

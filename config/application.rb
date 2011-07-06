@@ -41,8 +41,7 @@ module LsRails
     config.filter_parameters += [:password]
   end
 end
-jarpath = File.join(File.dirname(__FILE__), "..", "vendor",
-                    "**", "*.jar")
+jarpath = File.join(File.dirname(__FILE__), "..", "vendor", "**", "*.jar")
 Dir[jarpath].each do |jar|
   #p :jar => jar
   require jar
@@ -52,4 +51,13 @@ require "logstash/namespace"
 require "logstash/search/elasticsearch"
 require "logstash/search/query"
 require "optparse"
-@backend = LogStash::Search::ElasticSearch.new({})
+
+ options = { 
+          :host => nil,
+          :port => 9300,
+          :cluster => "vertica",
+          :bind_host => nil,
+          :type => "node"
+        }   
+#BACKEND = LogStash::Search::ElasticSearch.new(options)
+
