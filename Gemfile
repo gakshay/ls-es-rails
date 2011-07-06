@@ -20,7 +20,7 @@ platforms :jruby do
   # JDBC adapter, comment out all the adapter gems below.
 
   # SQLite JDBC adapter
-  gem 'jdbc-sqlite3', :require => false
+  #gem 'jdbc-sqlite3', :require => false
 
   # Derby JDBC adapter
   #gem 'activerecord-jdbcderby-adapter'
@@ -33,12 +33,15 @@ platforms :jruby do
 
   # SQL Server JDBC adapter
   #gem 'activerecord-jdbcmssql-adapter'
-
+  gem 'jdbc-mysql', :require => false
 end
 
 gem 'haml'
 gem 'logstash'
 #gem 'jruby-elasticsearch'
+
+gem "jquery-rails"
+gem "devise"
 
 # Use unicorn as the web server
 # gem 'unicorn'

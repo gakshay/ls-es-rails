@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_filter :authenticate_user!
   def index
   end
 
@@ -13,7 +14,7 @@ class SearchController < ApplicationController
       :count => count
     )
 
-    @backend.search(query, async=false) do |results|
+    BACKEND.search(query, async=false) do |results|
       @results = results
       if @results.error?
         status 500
