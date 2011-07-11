@@ -42,6 +42,7 @@ gem 'logstash'
 
 gem "jquery-rails"
 gem "devise"
+gem "trinidad"
 
 # Use unicorn as the web server
 # gem 'unicorn'
