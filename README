@@ -30,5 +30,5 @@ Running our Log-Viewer server
 =============================
 
 1. Running as a production server  `jruby -J-Djruby.thread.pool.min=1 -J-Djruby.thread.pool.max=1 -J-Djruby.stack.max=1024m -J-Djruby.thread.pooling=true -J-Xmx512m -J-Druby.native.enabled=false -J-Xms512m --fast --server -S trinidad -e production --threadsafe`
-2. Go to `http://localhost:3000`. Please login/register first
+2. Go to `http://<server-ip=address>:3000`. Please login/register first
 3. If your connection fails. Kindly change the URL to the ElasticSearch host IP at 9200 port and connect again.
