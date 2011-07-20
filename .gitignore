@@ -2,3 +2,5 @@
 db/*.sqlite3
 log/*.log
 tmp/
+scripts/elasticsearch/logs/
+scripts/elasticsearch/data/

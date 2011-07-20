@@ -1,14 +1,34 @@
 == Welcome to Rails Log Monitoring Application
 
-Setting up your devel environment
-=================================
+Setting up your working environment
+===================================
 
-1. clone the repo `git clone git://github.com/gakshay/ls-es-rails.git`
-2. Create a mysql(pgsql) database, user and update `config/database.yml`
+1. clone the repo `git clone git://github.com/metricmine/log-viewer.git`
+2. Create a mysql(pgsql) database, user and update `config/database.yml` for production environment
 3. Install all the dependent gems
     `cat gemlist.install | python -c "import sys;import re; from itertools import chain; l=sys.stdin.readlines();x=[ [ ' install --no-ri --no-rdoc ' + line[:-1][:line.index(' ')] + ' --version ' +k for k in line[line.index('(')+1:line.index(')')].split(',')]   for line in l]; print '\n'.join(item for item in chain(*x))" | xargs -L 1 -t gem`
 4. Run `bundle install`
 5. Run `rake db:migrate`
 
 
+Running ElasticSearch
+=====================
 
+1. Change the host IP to server IP. `vi script/elasticsearch/config/elasticsearch.yml`
+2. Running as a foreground process from root directory `./script/elasticsearch/bin/elasticsearch -f`
+
+
+Configuring and running Logstash to read input files and send it to ES for indexing
+===================================================================================
+
+1. Configure the logstash input files here `config/logstash.conf`. For more options refer to logstash documentation http://logstash.net/docs/1.0.14/
+2. Configure the host of your ElasticSearch server instance in congiguration file
+3. Now run the logstash from root directory `./script/logstash agent -f config/logstash.conf`. It will now read the input files and send them to ES for indexing
+
+
+Running our Log-Viewer server
+=============================
+
+1. Running as a production server  `jruby -J-Djruby.thread.pool.min=1 -J-Djruby.thread.pool.max=1 -J-Djruby.stack.max=1024m -J-Djruby.thread.pooling=true -J-Xmx512m -J-Druby.native.enabled=false -J-Xms512m --fast --server -S trinidad -e production --threadsafe`
+2. Go to `http://localhost:3000`. Please login/register first
+3. If your connection fails. Kindly change the URL to the ElasticSearch host IP at 9200 port and connect again.
