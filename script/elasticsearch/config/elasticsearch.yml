@@ -1,0 +1,25 @@
+#network settings
+network:
+  host: 10.0.1.54
+
+# Cluster Settings
+cluster:
+  name: elasticsearch
+
+# Gateway Settings
+#gateway:
+#  recover_after_nodes: 1
+#  recover_after_time: 5m
+#  expected_nodes: 2
+
+
+# Force all memory to be locked, forcing JVM to never swap
+#  (make sure to set MIN and MAX mem to the same value)
+#bootstrap:
+#  mlockall: true
+
+# Unicast Discovery (disable multicast)
+#discovery:
+#  zen:
+#    multicast.enabled: false
+#    unicast.hosts: ["host1", "host2"]
